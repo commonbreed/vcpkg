@@ -106,6 +106,8 @@ if(IMGUI_BUILD_VULKAN_BINDING)
 endif()
 
 if(IMGUI_BUILD_WIN32_BINDING)
+    find_library(DWMAPI_LIBRARY NAMES dwmapi REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PUBLIC dwmapi)
     target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/backends/imgui_impl_win32.cpp)
 endif()
 
